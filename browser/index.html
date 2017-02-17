@@ -5,9 +5,87 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./style.css">
   </head>
+
   <body>
     <div class="page-container">
-      <div class="calculator">
+      <div id="calculator-1" class="calculator">
+        <div class="calculator-screen">
+          <div id="calculator-screen-number" class="calculator-screen-number">
+            0
+          </div>
+        </div>
+        <div class="calculator-buttons">
+          <div class="calculator-buttons-row calculator-buttons-top">
+            <button buttonData="ac" class="calculator-button calculator-button-grey calculator-button-ac">
+              AC
+            </button>
+            <button buttonData="negative" class="calculator-button calculator-button-grey calculator-button-neg">
+              +/-
+            </button>
+            <button buttonData="modulo" class="calculator-button calculator-button-operation calculator-button-grey calculator-button-%">
+              %
+            </button>
+            <button buttonData="divide" class="calculator-button calculator-button-operation calculator-button-orange calculator-button-divide">
+              &divide;
+            </button>
+          </div>
+          <div class="calculator-buttons-row">
+            <button buttonData="7" class="calculator-button calculator-button-number calculator-button-white calculator-button-7">
+              7
+            </button>
+            <button buttonData="8" class="calculator-button calculator-button-number calculator-button-white calculator-button-8">
+              8
+            </button>
+            <button buttonData="9" class="calculator-button calculator-button-number calculator-button-white calculator-button-9">
+              9
+            </button>
+            <button buttonData="times" class="calculator-button calculator-button-operation calculator-button-orange calculator-button-times">
+              &times;
+            </button>
+          </div>
+          <div class="calculator-buttons-row">
+            <button buttonData="4" class="calculator-button calculator-button-number calculator-button-white calculator-button-4">
+              4
+            </button>
+            <button buttonData="5" class="calculator-button calculator-button-number calculator-button-white calculator-button-5">
+              5
+            </button>
+            <button buttonData="6" class="calculator-button calculator-button-number calculator-button-white calculator-button-6">
+              6
+            </button>
+            <button buttonData="minus" class="calculator-button calculator-button-operation calculator-button-orange calculator-button-minus">
+              -
+            </button>
+          </div>
+          <div class="calculator-buttons-row">
+            <button buttonData="1" class="calculator-button calculator-button-number calculator-button-white calculator-button-1">
+              1
+            </button>
+            <button buttonData="2" class="calculator-button calculator-button-number calculator-button-white calculator-button-2">
+              2
+            </button>
+            <button buttonData="3" class="calculator-button calculator-button-number calculator-button-white calculator-button-3">
+              3
+            </button>
+            <button buttonData="plus" class="calculator-button calculator-button-operation calculator-button-orange calculator-button-plus">
+              +
+            </button>
+          </div>
+          <div class="calculator-buttons-row calculator-buttons-bottom">
+            <button buttonData="0" class="calculator-button calculator-button-number calculator-button-white calculator-button-0">
+              <span class="calculator-button-0-number">0</span><span class="calculator-button-0-padding"></span>
+            </button>
+            <button buttonData="decimal" class="calculator-button calculator-button-white calculator-button-decimal">
+              .
+            </button>
+            <button buttonData="equals" class="calculator-button calculator-button-orange calculator-button-equals">
+              =
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="calculator-2" class="calculator">
         <div class="calculator-screen">
           <div id="calculator-screen-number" class="calculator-screen-number">
             0
@@ -92,6 +170,7 @@
     <script type="text/javascript" src="./javascript/helpers/showNumberOnScreen.js"></script>
     <script type="text/javascript" src="./javascript/helpers/stopWaitingForDecimal.js"></script>
     <script type="text/javascript" src="./javascript/helpers/translateOperation.js"></script>
+    <script type="text/javascript" src="./javascript/helpers/switchActiveCalculator.js"></script>
 
     <script type="text/javascript" src="./javascript/buttonPresses/clearButton.js"></script>
     <script type="text/javascript" src="./javascript/buttonPresses/decimalButton.js"></script>
@@ -100,6 +179,7 @@
     <script type="text/javascript" src="./javascript/buttonPresses/numberButton.js"></script>
     <script type="text/javascript" src="./javascript/buttonPresses/operationButton.js"></script>
 
+    <script type="text/javascript" src="./javascript/buttonListeners/addActiveCalculatorListener.js"></script>
     <script type="text/javascript" src="./javascript/buttonListeners/addAllClearListener.js"></script>
     <script type="text/javascript" src="./javascript/buttonListeners/addDecimalListener.js"></script>
     <script type="text/javascript" src="./javascript/buttonListeners/addEqualsListener.js"></script>
