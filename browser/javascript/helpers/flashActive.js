@@ -1,5 +1,5 @@
-function flashActive(value){
-  var button = document.querySelector(`button[buttondata="${value}"]`)
+function flashActive(value, calculator){
+  var button = document.querySelector(`div#${calculator.name} button[buttondata="${value}"]`)
   button.focus()
   blurButton(button)
 }

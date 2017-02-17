@@ -4,22 +4,22 @@ function addKeyDownListener(calculator){
     if(event.shiftKey){
       switch(keyCode){
         case 53:
-          flashActive('modulo')
+          flashActive('modulo', calculator)
           operationButton('modulo', calculator)
           break
         case 56:
-          flashActive('times')
+          flashActive('times', calculator)
           operationButton('times', calculator)
           break
         case 61:
-          flashActive('plus')
+          flashActive('plus', calculator)
           operationButton('plus', calculator)
           break
       }
     } else {
       switch(keyCode){
         case 67:
-          flashActive('ac')
+          flashActive('ac', calculator)
           clearButton(calculator)
           break
         case 49:
@@ -34,24 +34,24 @@ function addKeyDownListener(calculator){
         case 48:
           var digitString = String.fromCharCode(keyCode)
 
-          flashActive(digitString)
+          flashActive(digitString, calculator)
           numberButton(digitString, calculator)
           break
         case 191:
-          flashActive('divide')
+          flashActive('divide', calculator)
           operationButton('divide', calculator)
           event.preventDefault()
           break
         case 173:
-          flashActive('minus')
+          flashActive('minus', calculator)
           operationButton('minus', calculator)
           break
         case 61:
-          flashActive('equals')
+          flashActive('equals', calculator)
           equalsButton(calculator)
           break
         case 190:
-          flashActive('decimal')
+          flashActive('decimal', calculator)
           decimalButton(calculator)
           break
       }
