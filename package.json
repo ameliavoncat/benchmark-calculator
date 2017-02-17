@@ -1,0 +1,24 @@
+{
+  "name": "calculator-benchmark",
+  "version": "1.0.0",
+  "description": "A Calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ameliavoncat/benchmark-calculator.git"
+  },
+  "author": "Amelia Clarke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ameliavoncat/benchmark-calculator/issues"
+  },
+  "homepage": "https://github.com/ameliavoncat/benchmark-calculator#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1"
+  }
+}
