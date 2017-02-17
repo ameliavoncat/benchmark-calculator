@@ -74,7 +74,7 @@ button {
   background-color: #E0E1E0;
   transition: background-color 100ms;
 }
-.calculator-button-white:active, .calculator-button-grey:active {
+.calculator-button-white:focus, .calculator-button-grey:focus {
   background-color: #A1A1A1;
 }
 
@@ -85,7 +85,7 @@ button {
   transition: background-color 100ms;
 }
 
-.calculator-button-orange:active {
+.calculator-button-orange:focus {
   background-color: #B26A2D;
 }
 
