@@ -1,13 +1,16 @@
 function operationButton(value, calculator){
-  if(calculator.operation) { equalsButton(calculator) }
-  if(calculator.total !== 0){
-    calculator.previous = calculator.total
-    calculator.total = 0
+  if(calculator.operation) {
+    equalsButton(calculator, value)
   } else {
-    calculator.previous = calculator.current
+    if(calculator.total !== 0){
+      calculator.previous = calculator.total
+      calculator.total = 0
+    } else {
+      calculator.previous = calculator.current
+    }
+    calculator.current = 0
+    calculator.operation = value
+    showNumberOnScreen('previous', calculator)
+    stopWaitingForDecimal(calculator)
   }
-  calculator.current = 0
-  calculator.operation = translateOperation(value)
-  showNumberOnScreen('previous', calculator)
-  stopWaitingForDecimal(calculator)
 }
