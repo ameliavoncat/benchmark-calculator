@@ -1,18 +1,40 @@
 window.onload = function(){
-  var numberButtons1 = Array.from(document.querySelectorAll('div#calculator-1 button.calculator-button-number'))
-  var operationButtons1 = Array.from(document.querySelectorAll('div#calculator-1 button.calculator-button-operation'))
-  var equalsButton1 = Array.from(document.querySelectorAll('div#calculator-1 button.calculator-button-equals'))[0]
-  var allClearButton1 = Array.from(document.querySelectorAll('div#calculator-1 button.calculator-button-ac'))[0]
-  var negativeButton1 = Array.from(document.querySelectorAll('div#calculator-1 button.calculator-button-neg'))[0]
-  var decimalButton1 = Array.from(document.querySelectorAll('div#calculator-1 button.calculator-button-decimal'))[0]
+  function generateCalculator(name){
+    function attachCalculatorListeners(calculatorName, visitorId, calculatorHistory = []){
+      var calculator = new Calculator(0, 0, 0, null, false, visitorId, calculatorName, calculatorHistory)
 
-  var calculator1 = new Calculator(0, 0, 0, null, false, 'calculator-1')
-  numberButtons1.forEach(function(button){ addNumberListener(button, calculator1) })
-  operationButtons1.forEach(function(button){ addOperationListener(button, calculator1) })
-  addEqualsListener(equalsButton1, calculator1)
-  addAllClearListener(allClearButton1, calculator1)
-  addNegativeListener(negativeButton1, calculator1)
-  addDecimalListener(decimalButton1, calculator1)
-  addKeyDownListener(calculator1)
-  addActiveCalculatorListener(calculator1, true)
+      numberButtons.forEach(function(button){ addNumberListener(button, calculator) })
+      operationButtons.forEach(function(button){ addOperationListener(button, calculator) })
+      addEqualsListener(equalsButton, calculator)
+      addAllClearListener(allClearButton, calculator)
+      addNegativeListener(negativeButton, calculator)
+      addDecimalListener(decimalButton, calculator)
+      addKeyDownListener(calculator)
+      addActiveCalculatorListener(calculator, true)
+      showNumberOnScreen('previous', calculator)
+    }
+
+    var numberButtons = Array.from(document.querySelectorAll(`div#${name} button.calculator-button-number`))
+    var operationButtons = Array.from(document.querySelectorAll(`div#${name} button.calculator-button-operation`))
+    var equalsButton = Array.from(document.querySelectorAll(`div#${name} button.calculator-button-equals`))[0]
+    var allClearButton = Array.from(document.querySelectorAll(`div#${name} button.calculator-button-ac`))[0]
+    var negativeButton = Array.from(document.querySelectorAll(`div#${name} button.calculator-button-neg`))[0]
+    var decimalButton = Array.from(document.querySelectorAll(`div#${name} button.calculator-button-decimal`))[0]
+
+    var windowName = getBrowser(window.navigator.userAgent)
+    postVisitorRequest(windowName, function(visitor){
+      var calculatorKey = Object.keys(visitor).find(function(key){
+        return key === name
+      })
+      if(calculatorKey){
+        attachCalculatorListeners(name, visitor.id, visitor[calculatorKey])
+      } else {
+        postNewCalculator(visitor.id, name, function(calculator){
+          attachCalculatorListeners(name, visitor.id)
+        })
+      }
+    })
+  }
+
+  generateCalculator('calculator-1')
 }

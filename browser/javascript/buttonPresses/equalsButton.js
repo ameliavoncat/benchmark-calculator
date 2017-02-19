@@ -1,6 +1,7 @@
 function equalsButton(calculator, newOperation = null){
   function equalsCallback(response){
     calculator.total = response
+    calculator.history.push(calculator.total)
     calculator.current = 0
     calculator.paused = false
 
@@ -16,6 +17,6 @@ function equalsButton(calculator, newOperation = null){
   }
   if(calculator.operation){
     calculator.paused = true
-    postRequestHelper(calculator.operation, calculator.previous, calculator.current, equalsCallback)
+    postOperationRequest(calculator.operation, calculator.previous, calculator.current, calculator.visitorId, calculator.name, equalsCallback)
   }
 }
