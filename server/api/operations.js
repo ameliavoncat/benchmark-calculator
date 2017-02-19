@@ -1,40 +1,71 @@
 var express = require('express')
 var router = new express.Router()
-var path = require('path')
+var inserts = require('../database/inserts')
+var queries = require('../database/queries')
 
 router.post('/plus', function(request, response){
-  var {a, b} = request.body
+  var {a, b, visitor_id, name} = request.body
   var result = Number(a) + Number(b)
 
-  response.send(JSON.stringify({result}))
+  return queries.getCalculatorId(visitor_id, name)
+    .then(function(calculator_id){
+      return inserts.addCalculation(calculator_id, result)
+        .then(function(){
+          response.send(JSON.stringify({result}))
+        })
+    })
 })
 
 router.post('/minus', function(request, response){
-  var {a, b} = request.body
+  var {a, b, visitor_id, name} = request.body
   var result = Number(a) - Number(b)
 
-  response.send(JSON.stringify({result}))
-})
+  return queries.getCalculatorId(visitor_id, name)
+    .then(function(calculator_id){
+      return inserts.addCalculation(calculator_id, result)
+        .then(function(){
+          response.send(JSON.stringify({result}))
+        })
+    })
+  })
 
 router.post('/divide', function(request, response){
-  var {a, b} = request.body
+  var {a, b, visitor_id, name} = request.body
   var result = Number(a) / Number(b)
 
-  response.send(JSON.stringify({result}))
+  return queries.getCalculatorId(visitor_id, name)
+    .then(function(calculator_id){
+      return inserts.addCalculation(calculator_id, result)
+        .then(function(){
+          response.send(JSON.stringify({result}))
+        })
+    })
 })
 
 router.post('/times', function(request, response){
-  var {a, b} = request.body
+  var {a, b, visitor_id, name} = request.body
   var result = Number(a) * Number(b)
 
-  response.send(JSON.stringify({result}))
+  return queries.getCalculatorId(visitor_id, name)
+    .then(function(calculator_id){
+      return inserts.addCalculation(calculator_id, result)
+        .then(function(){
+          response.send(JSON.stringify({result}))
+        })
+    })
 })
 
 router.post('/modulo', function(request, response){
-  var {a, b} = request.body
+  var {a, b, visitor_id, name} = request.body
   var result = Number(a) % Number(b)
 
-  response.send(JSON.stringify({result}))
+  return queries.getCalculatorId(visitor_id, name)
+    .then(function(calculator_id){
+      return inserts.addCalculation(calculator_id, result)
+        .then(function(){
+          response.send(JSON.stringify({result}))
+        })
+    })
 })
 
 module.exports = router
